@@ -1,7 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://bns2ldyrk5f2k"]
+[gd_scene load_steps=11 format=3 uid="uid://bns2ldyrk5f2k"]
 
 [ext_resource type="Texture2D" uid="uid://bei7x67psb4c4" path="res://Assets_PixelAdventure/Main Characters/Mask Dude.png" id="1_485gg"]
 [ext_resource type="Script" path="res://Jugador/player.gd" id="1_sk0od"]
+[ext_resource type="Script" path="res://Jugador/Camera2D.gd" id="3_6q8hf"]
+
+[sub_resource type="Animation" id="Animation_1c34j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_ni6uf"]
+resource_name = "fall"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
 
 [sub_resource type="Animation" id="Animation_7wfob"]
 resource_name = "idle"
@@ -20,8 +52,9 @@ tracks/0/keys = {
 "values": [0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_1c34j"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_kdxmd"]
+resource_name = "jump"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -32,7 +65,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [23]
 }
 
 [sub_resource type="Animation" id="Animation_xo8hr"]
@@ -50,38 +83,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-}
-
-[sub_resource type="Animation" id="Animation_kdxmd"]
-resource_name = "jump"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [23]
-}
-
-[sub_resource type="Animation" id="Animation_ni6uf"]
-resource_name = "fall"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [24]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ctfst"]
@@ -113,3 +114,6 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_77c4q")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_6q8hf")
